@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import HoverAndBlur from '../components/HoverAndBlur/HoverAndBlur';
 import BackgroundChanger from '../components/BackgroundChanger/BackgroundChanger';
+import Clocks from './Clocks/Clocks';
 
 import { RootState } from '../types';
 
@@ -39,6 +40,9 @@ const App = () => {
                         <Link to='/change-background' className='second-app link'>
                             <Button type={site_theme === 'light' ? 'primary' : 'default'}>Change Background</Button>
                         </Link>
+                        <Link to='/clocks' className='third-app link'>
+                            <Button type={site_theme === 'light' ? 'primary' : 'default'}>Clocks</Button>
+                        </Link>
                     </div>
 
                     <Divider className={`divider-${site_theme}`} />
@@ -53,6 +57,7 @@ const App = () => {
                         <Route path='/' element={<HoverAndBlur />} />
                         <Route path='/hover-and-blur' element={<HoverAndBlur />} />
                         <Route path='/change-background' element={<BackgroundChanger />} />
+                        <Route path='/clocks' element={<Clocks />} />
                     </Routes>
                 </div>  
             </Layout>

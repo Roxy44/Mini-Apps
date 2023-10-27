@@ -16,8 +16,6 @@ const BackgroundChanger = () => {
 
     const { background_color_theme } = useSelector((state: RootState) => state.settings);
 
-    const [currentBG, setCurrentBG] = useState(2);
-
     const backgroundDictionary: string[] = [
         'menu-content-night',
         'menu-content-water',
@@ -25,6 +23,8 @@ const BackgroundChanger = () => {
         'menu-content-lightning',
         'menu-content-leaves',
     ];
+
+    const [currentBG, setCurrentBG] = useState(backgroundDictionary.indexOf(background_color_theme));
 
     const onLeftArrowClick = () => {
         let background = '';

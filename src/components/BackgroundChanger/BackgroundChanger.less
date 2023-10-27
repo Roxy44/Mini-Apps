@@ -1,102 +1,119 @@
-.background-title {
-    height: 50px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: white;
-    position: relative;
-    font-size: 28px;
-    z-index: 2;
+.bg-changer-container::before {
+    content: '';
+    position: absolute;
+    right: 0px;
+    width: calc(100% - 200px);
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 1;
 }
 
-.background-block {
+.bg-changer-container {
+    height: 100%;
     display: flex;
+    flex-direction: column;
+    justify-content: center;
 
-    .background-image {
-        width: 700px;
-        height: 700px;
-        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-        overflow: hidden;
-        z-index: 2 !important;
-    }
-
-    .menu-content-city {
-        background: url(../../resources/Backgrounds/City.png);
-        background-position: center 41%;
-        background-size: calc(100vw - 200px) auto;
-        background-repeat: no-repeat;
-    }
-
-    .menu-content-lightning {
-        background: url(../../resources/Backgrounds/Lightning.png);
-        background-position: center 45%;
-        background-size: calc(100vw - 200px) auto;
-        background-repeat: no-repeat;
-    }
-
-    .menu-content-leaves {
-        background: url(../../resources/Backgrounds/Leaves.png);
-        background-position: center 45%;
-        background-size: calc(100vw - 200px) auto;
-        background-repeat: no-repeat;
-    }
-
-    .menu-content-night {
-        background: url(../../resources/Backgrounds/Night.png);
-        background-position: center 40%;
-        background-size: calc(100vw - 200px) auto;
-        background-repeat: no-repeat;
-    }
-
-    .menu-content-water {
-        background: url(../../resources/Backgrounds/Water.png);
-        background-position: center 40%;
-        background-size: calc(100vw - 200px) auto;
-        background-repeat: no-repeat;
-    }
-
-    .background-button {
+    .background-title {
+        height: 50px;
         display: flex;
+        justify-content: center;
         align-items: center;
+        color: white;
+        position: relative;
+        font-size: 28px;
+        z-index: 2;
+    }
 
-        >* {
-            background: none;
-            color: white;
-            border-radius: 0px;
+    .background-block {
+        display: flex;
+
+        .background-image {
+            width: 700px;
+            height: 700px;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+            overflow: hidden;
             z-index: 2 !important;
         }
-    }
 
-    .left-arrow {
-        >* {
-            width: 60px;
-            height: 60px;
-            border-left: 2px solid orange;
-            border-top: 2px solid orange;
-            border-bottom: 2px solid orange;
-            border-right: none;
+        .menu-content-city {
+            background: url(../../resources/Backgrounds/City.png);
+            background-position: center 41%;
+            background-size: calc(100vw - 200px) auto;
+            background-repeat: no-repeat;
         }
 
-        .anticon {
-            svg {
-                font-size: 24px;
+        .menu-content-lightning {
+            background: url(../../resources/Backgrounds/Lightning.png);
+            background-position: center 45%;
+            background-size: calc(100vw - 200px) auto;
+            background-repeat: no-repeat;
+        }
+
+        .menu-content-leaves {
+            background: url(../../resources/Backgrounds/Leaves.png);
+            background-position: center 45%;
+            background-size: calc(100vw - 200px) auto;
+            background-repeat: no-repeat;
+        }
+
+        .menu-content-night {
+            background: url(../../resources/Backgrounds/Night.png);
+            background-position: center 40%;
+            background-size: calc(100vw - 200px) auto;
+            background-repeat: no-repeat;
+        }
+
+        .menu-content-water {
+            background: url(../../resources/Backgrounds/Water.png);
+            background-position: center 40%;
+            background-size: calc(100vw - 200px) auto;
+            background-repeat: no-repeat;
+        }
+
+        .background-button {
+            display: flex;
+            align-items: center;
+
+            >* {
+                background: none;
+                color: white;
+                border-radius: 0px;
+                z-index: 2 !important;
             }
         }
-    }
 
-    .right-arrow {
-        >* {
-            width: 60px;
-            height: 60px;
-            border-right: 2px solid orange;
-            border-top: 2px solid orange;
-            border-bottom: 2px solid orange;
-            border-left: none;
+        .left-arrow {
+            >* {
+                width: 60px;
+                height: 60px;
+                border-left: 2px solid orange;
+                border-top: 2px solid orange;
+                border-bottom: 2px solid orange;
+                border-right: none;
+            }
+
+            .anticon {
+                svg {
+                    font-size: 24px;
+                }
+            }
         }
 
-        .anticon {
-            svg {
-                font-size: 24px;
+        .right-arrow {
+            >* {
+                width: 60px;
+                height: 60px;
+                border-right: 2px solid orange;
+                border-top: 2px solid orange;
+                border-bottom: 2px solid orange;
+                border-left: none;
+            }
+
+            .anticon {
+                svg {
+                    font-size: 24px;
+                }
             }
         }
     }
