@@ -13,7 +13,6 @@ const Clocks = () => {
     }, []);    
 
     const scale = (num: number, in_min: number, in_max: number, out_min: number, out_max: number) => {
-        
         return (num - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
     };
 
@@ -33,9 +32,9 @@ const Clocks = () => {
                 minutesHand.transform = `rotate(${scale(Number(time.split(':')[1]), 0, 59, 0, 360)}deg)`;
                 secondsHand.transform = `rotate(${scale(Number(time.split(':')[2]), 0, 59, 0, 360)}deg)`;
             }
-
+            
             if (Number(time.split(':')[2]) >= 59) {
-                setTimeout(() => setTime(moment().format('h:mm')), 100);
+                setTimeout(() => setTime(moment().format('h:mm')), 2000);
             }
         }, 1000);
     };
