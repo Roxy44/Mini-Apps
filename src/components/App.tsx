@@ -9,6 +9,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import HoverAndBlur from '../components/HoverAndBlur/HoverAndBlur';
 import BackgroundChanger from '../components/BackgroundChanger/BackgroundChanger';
 import Clocks from './Clocks/Clocks';
+import KeysDictionary from './KeysDictionary/KeysDictionary';
 
 import { RootState } from '../types';
 
@@ -43,6 +44,9 @@ const App = () => {
                         <Link to='/clocks' className='third-app link'>
                             <Button type={site_theme === 'light' ? 'primary' : 'default'}>Clocks</Button>
                         </Link>
+                        <Link to='/keys-dictionary' className='fourth-app link'>
+                            <Button type={site_theme === 'light' ? 'primary' : 'default'}>Keys Dictionary</Button>
+                        </Link>
                     </div>
 
                     <Divider className={`divider-${site_theme}`} />
@@ -58,6 +62,7 @@ const App = () => {
                         <Route path='/hover-and-blur' element={<HoverAndBlur />} />
                         <Route path='/change-background' element={<BackgroundChanger />} />
                         <Route path='/clocks' element={<Clocks />} />
+                        <Route path='/keys-dictionary' element={<KeysDictionary />} />
                     </Routes>
                 </div>  
             </Layout>

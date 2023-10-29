@@ -12,7 +12,7 @@ const HoverAndBlur = () => {
     ));
 
     return (
-        <div className='container'>
+        <div className='hab-container'>
             {board}
         </div>
     );  

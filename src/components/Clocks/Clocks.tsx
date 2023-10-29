@@ -6,7 +6,7 @@ import './Clocks.less';
 const Clocks = () => {
 
     const [timeNow, setTime] = useState(''); 
-    const [dateNow, setDate] = useState('');
+    const [dateNow, setDate] = useState('');   
 
     useEffect(() => {
         getData();
@@ -34,7 +34,7 @@ const Clocks = () => {
             }
             
             if (Number(time.split(':')[2]) >= 59) {
-                setTimeout(() => setTime(moment().format('h:mm')), 2000);
+                setTimeout(() => setTime(moment().format('h:mm')), 1000);
             }
         }, 1000);
     };
