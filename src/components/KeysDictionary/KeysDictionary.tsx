@@ -12,8 +12,8 @@ const KeysDictionary = () => {
         document.getElementById('wonna-get-focus')?.focus();
     }, []);
     
-    const keyPressHandler = (event: any) => {
-        setEventKey(event.key);
+    const keyPressHandler = (event: any) => {        
+        setEventKey(event.key === ' ' ? 'Space' : event.key);
         setEventKeyCode(event.keyCode);
         setEventCode(event.code);
     };
