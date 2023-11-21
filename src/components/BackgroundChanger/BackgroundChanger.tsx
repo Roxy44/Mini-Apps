@@ -27,29 +27,16 @@ const BackgroundChanger = () => {
     const [currentBG, setCurrentBG] = useState(backgroundDictionary.indexOf(background_color_theme));
 
     const onLeftArrowClick = () => {
-        let background = '';
-        if (backgroundDictionary[currentBG - 1]) {
-            background = backgroundDictionary[currentBG - 1];
-            setCurrentBG(currentBG - 1);
-        } else {
-            background = backgroundDictionary[backgroundDictionary.length - 1];
-            setCurrentBG(backgroundDictionary.length - 1);
-        }
-        dispatch({ type: 'SET_BACKGROUND_COLOR_THEME', payload: background });
+        const backgroundIndex = backgroundDictionary[currentBG - 1] ? (currentBG - 1) : (backgroundDictionary.length - 1);
+        setCurrentBG(backgroundIndex);
+        dispatch({ type: 'SET_BACKGROUND_COLOR_THEME', payload: backgroundDictionary[backgroundIndex] });
     };
 
     const onRightArrowClick = () => {
-        let background = '';
-        if (backgroundDictionary[currentBG + 1]) {
-            background = backgroundDictionary[currentBG + 1];
-            setCurrentBG(currentBG + 1);
-        } else {
-            background = backgroundDictionary[0];
-            setCurrentBG(0);
-        }
-        dispatch({ type: 'SET_BACKGROUND_COLOR_THEME', payload: background });
+        const backgroundIndex = backgroundDictionary[currentBG + 1] ? (currentBG + 1) : 0;
+        setCurrentBG(backgroundIndex);
+        dispatch({ type: 'SET_BACKGROUND_COLOR_THEME', payload: backgroundDictionary[backgroundIndex] });
     };
-
 
     return (
         <div className='bg-changer-container'>

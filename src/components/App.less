@@ -9,6 +9,7 @@ body {
 }
 
 .ant-layout .ant-layout-sider-light {
+    height: 100vh;
     background: wheat;
 }
 
@@ -29,20 +30,19 @@ body {
     .divider-dark {
         width: 160px;
         background: white;
-        margin: 0;
+        margin: 12px 0 12px 0;
     }
 
     .divider-light {
         width: 160px;
         background: black;
-        margin: 0;
+        margin: 12px 0 12px 0;
     }
 
     .menu-apps {
-        height: 800px;
+        height: 784px;
         display: flex;
         flex-direction: column;
-        margin-top: 12px;
 
         .link {
             margin: 12px 0;
@@ -50,6 +50,18 @@ body {
             >* {
                 width: 100%;
             }
+        }
+
+        span {
+            align-self: center;
+        }
+
+        .dark {
+            color: darkorange;
+        }
+
+        .light {
+            color: purple;
         }
     }
 

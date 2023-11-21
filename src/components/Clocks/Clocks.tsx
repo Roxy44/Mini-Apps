@@ -43,6 +43,18 @@ const Clocks = () => {
         <div className='clocks-container'>
             <div className='clocks-block'>
                 <div className='clocks'>
+
+                    <div className='six-and-twelve'>
+                        <div className='twelve'></div>  
+                    </div>
+                    <div className='three-and-nine'>
+                        <div className='nine'></div>
+                        <div className='three'></div>
+                    </div>
+                    <div className='six-and-twelve'>
+                        <div className='six'></div>
+                    </div>
+
                     <div id='hours-hand'>
                         <div className='hours hands'></div>
                     </div>

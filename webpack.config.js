@@ -24,6 +24,10 @@ module.exports = {
                 test: /\.css$/i,
                 use: ['style-loader', 'css-loader'],
             },
+            {
+                test: /\.mp3$/,
+                loader: 'file-loader'
+            },
         ],
     },
     plugins: [
@@ -42,6 +46,6 @@ module.exports = {
     },
     devServer: {
         historyApiFallback: true,
-        allowedHosts: ['all']
+        allowedHosts: ['all'],
     }
 };

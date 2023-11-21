@@ -3,6 +3,13 @@
     height: @height;
 }
 
+.getSlice(@align, @height, @width) {
+    align-self: @align;
+    height: @height;
+    width: @width;
+    background-color: black;
+}
+
 .clocks-container {
     .getSize(60%, 80%);
 
@@ -12,43 +19,74 @@
         justify-content: center;
         align-items: center;
 
-        #hours-hand,
-        #minutes-hand,
-        #seconds-hand {
-            .getSize(400px, 400px);
-            position: absolute;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
         .clocks {
             .getSize(400px, 400px);
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
+            background-color: wheat;
+            border-radius: 50%;
 
-            .hands {
-                width: 3px;
-                position: absolute
+            .three-and-nine {
+                width: 100%;
+                height: 3px;
+
+                .nine {
+                    .getSlice(unset, 3px, 10px);
+                    float: left;
+                }
+
+                .three {
+                    .getSlice(unset, 3px, 10px);
+                    float: right;
+                }
             }
 
-            .hours {
-                height: 100px;
-                background-color: wheat;
-                transform: translate(-20%, -50%);
+            .six-and-twelve {
+                height: 100%;
+                display: flex;
+
+                .six {
+                    .getSlice(end, 10px, 3px);
+                }
+
+                .twelve {
+                    .getSlice(start, 10px, 3px);
+                }
             }
 
-            .minutes {
-                height: 140px;
-                background-color: wheat;
-                transform: translate(-10%, -50%);
-            }
+            #hours-hand,
+            #minutes-hand,
+            #seconds-hand {
+                .getSize(400px, 400px);
+                position: absolute;
+                display: flex;
+                align-items: center;
+                justify-content: center;
 
-            .seconds {
-                height: 180px;
-                background-color: red;
-                transform: translate(-10%, -50%);
+                .hands {
+                    width: 3px;
+                    position: absolute
+                }
+
+                .hours {
+                    height: 100px;
+                    background-color: black;
+                    transform: translate(-20%, -50%);
+                }
+
+                .minutes {
+                    height: 140px;
+                    background-color: black;
+                    transform: translate(-10%, -50%);
+                }
+
+                .seconds {
+                    height: 180px;
+                    background-color: red;
+                    transform: translate(-10%, -50%);
+                }
             }
 
             .center {
