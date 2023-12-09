@@ -1,0 +1,59 @@
+.random_org-container {
+    min-height: 30%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+
+    .random_org-title {
+        width: 500px;
+        display: flex;
+        text-align: center;
+        justify-content: center;
+
+        span {
+            width: 430px;
+            color: white;
+            font-size: 20px;
+            word-break: break-all;
+        }
+    }
+
+    .random_org-input {
+        width: 500px;
+        max-width: 500px;
+        height: 100px;
+        font-size: 18px;
+        resize: none;
+        border: 3px solid black;
+        border-radius: unset;
+    }
+
+    ::placeholder {
+        color: gray;
+    }
+
+    .random_org-block {
+        max-width: 500px;
+        min-height: 50px;
+        display: flex;
+        justify-content: center;
+        padding: 8px;
+
+        .random-item {
+            min-height: 30px;
+            min-width: 60px;
+            display: block;
+            text-align: center;
+            word-wrap: break-word;
+            color: white;
+            background-color: orange;
+            padding: 8px;
+            margin: 4px;
+            border-radius: 16px;
+        }
+
+        .random-item.highlight {
+            background-color: darkcyan;
+        }
+    }
+}

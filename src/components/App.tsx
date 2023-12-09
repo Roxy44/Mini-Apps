@@ -16,6 +16,7 @@ import HoverAndBlur from '../components/HoverAndBlur/HoverAndBlur';
 import { RootState } from '../types';
 
 import './App.less';
+import Randomizer from './Randomizer/Randomizer';
 
 const { Sider } = Layout;
 
@@ -56,7 +57,9 @@ const App = () => {
         <BrowserRouter>
             <Layout>
                 <Sider className='side-menu' theme={site_theme}>
-                    <span className='menu-label'>Mini Apps</span>
+                    <Link to='/'>
+                        <Button className={`menu-label theme-label-${site_theme}`} type={site_theme === 'light' ? 'primary' : 'default'}>Mini Apps</Button>
+                    </Link>
 
                     <Divider className={`divider-${site_theme}`} />
 
@@ -79,12 +82,12 @@ const App = () => {
                 </Sider>
                 <div className={`menu-content ${background_color_theme}`}>
                     <Routes>
-                        <Route path='/' element={<HoverAndBlur />} />
+                        <Route path='/' element={<BackgroundChanger />} />
                         <Route path='/change-background' element={<BackgroundChanger />} />
                         <Route path='/clocks' element={<Clocks />} />
                         <Route path='/keys-dictionary' element={<KeysDictionary />} />
                         <Route path='/drag-and-drop' element={<DragAndDrop />} />
-                        <Route path='/random-org' />
+                        <Route path='/random-org' element={<Randomizer />} />
                         <Route path='/paint' />
                         <Route path='/charts' />
 
