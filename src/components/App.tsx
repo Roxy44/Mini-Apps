@@ -10,13 +10,14 @@ import BackgroundChanger from '../components/BackgroundChanger/BackgroundChanger
 import Clocks from './Clocks/Clocks';
 import KeysDictionary from './KeysDictionary/KeysDictionary';
 import DragAndDrop from './DragAndDrop/DragAndDrop';
+import Randomizer from './Randomizer/Randomizer';
+import Paint from './Paint/Paint';
 // games
 import HoverAndBlur from '../components/HoverAndBlur/HoverAndBlur';
 
 import { RootState } from '../types';
 
 import './App.less';
-import Randomizer from './Randomizer/Randomizer';
 
 const { Sider } = Layout;
 
@@ -88,9 +89,8 @@ const App = () => {
                         <Route path='/keys-dictionary' element={<KeysDictionary />} />
                         <Route path='/drag-and-drop' element={<DragAndDrop />} />
                         <Route path='/random-org' element={<Randomizer />} />
-                        <Route path='/paint' />
+                        <Route path='/paint' element={<Paint />} />
                         <Route path='/charts' />
-
                         <Route path='/hover-and-blur' element={<HoverAndBlur />} />
                         <Route path='/snake' />
                         <Route path='/rocket-clicker' />
