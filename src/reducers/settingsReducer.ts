@@ -1,5 +1,5 @@
 const defaultState = {
-    background_color_theme: 'menu-content-night',
+    background_color_theme: 'menu-content-leaves',
     site_theme: 'dark',
 };
 

@@ -64,7 +64,7 @@ const DragAndDrop = () => {
             > 
                 <span>Be careful! Sound files are used on this page, make sure that the sound volume is not maximum</span>
             </Modal>
-            <Button type='primary' onClick={createHandler}>Create</Button>
+            <Button style={{border: '1px solid black'}} type='primary' onClick={createHandler}>Create</Button>
             <div className='boxes'>
                 {content}
             </div>

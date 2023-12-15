@@ -12,6 +12,7 @@ import KeysDictionary from './KeysDictionary/KeysDictionary';
 import DragAndDrop from './DragAndDrop/DragAndDrop';
 import Randomizer from './Randomizer/Randomizer';
 import Paint from './Paint/Paint';
+import Charts from './Charts/Charts';
 // games
 import HoverAndBlur from '../components/HoverAndBlur/HoverAndBlur';
 
@@ -78,7 +79,7 @@ const App = () => {
 
                     <div className='theme-block'>
                         <span className={`theme-title ${site_theme}`}>Theme</span>
-                        <Switch className='theme-switcher' checkedChildren='light' unCheckedChildren='dark' onChange={(value: boolean) => changeTheme(value)} />
+                        <Switch className={`theme-switcher-${site_theme}`} checkedChildren='light' unCheckedChildren='dark' onChange={(value: boolean) => changeTheme(value)} />
                     </div>
                 </Sider>
                 <div className={`menu-content ${background_color_theme}`}>
@@ -90,7 +91,7 @@ const App = () => {
                         <Route path='/drag-and-drop' element={<DragAndDrop />} />
                         <Route path='/random-org' element={<Randomizer />} />
                         <Route path='/paint' element={<Paint />} />
-                        <Route path='/charts' />
+                        <Route path='/charts' element={<Charts />} />
                         <Route path='/hover-and-blur' element={<HoverAndBlur />} />
                         <Route path='/snake' />
                         <Route path='/rocket-clicker' />
