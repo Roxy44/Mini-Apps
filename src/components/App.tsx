@@ -16,7 +16,7 @@ import Charts from './Charts/Charts';
 // games
 import HoverAndBlur from '../components/HoverAndBlur/HoverAndBlur';
 
-import { RootState } from '../types';
+import { RootState } from './types';
 
 import './App.less';
 

@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { Button } from 'antd';
 
-import { RootState } from '../../types';
+import { RootState } from '../types';
 
 import './BackgroundChanger.less';
 

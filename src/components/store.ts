@@ -2,9 +2,9 @@ import { combineReducers } from '@reduxjs/toolkit';
 import { createStore, applyMiddleware } from 'redux';
 import createSagaMiddleware from 'redux-saga';
 
-import rootSaga from './sagas/index';
+import rootSaga from './rootSaga';
 
-import { settingsReducer } from './reducers/settingsReducer';
+import { settingsReducer } from './BackgroundChanger/reducers/settingsReducer';
 
 const rootReducer = combineReducers({
     settings: settingsReducer,
