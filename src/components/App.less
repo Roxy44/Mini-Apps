@@ -1,4 +1,5 @@
 body {
+    height: 100vh;
     margin: 0;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
         'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
@@ -6,21 +7,38 @@ body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     transition: 0.4s;
+    box-sizing: content-box;
+}
+
+#root {
+    height: 100%;
+}
+
+.background-option(@background_png) {
+    background: @background_png;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    transition: 0.8s ease;
+}
+
+.ant-layout-has-sider {
+    width: 100%;
+    height: 100%;
 }
 
 .ant-layout .ant-layout-sider-light {
-    height: 100vh;
     background: wheat;
 }
 
 .side-menu {
-    width: 20%;
+    width: 10% !important;
     display: flex;
     justify-content: center;
 
     .menu-label {
         width: 100%;
-        height: 40px;
+        height: 5%;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -52,7 +70,7 @@ body {
     }
 
     .menu-apps {
-        height: 777px;
+        height: 79%;
         display: flex;
         flex-direction: column;
 
@@ -78,7 +96,7 @@ body {
     }
 
     .theme-block {
-        height: 50px;
+        height: 5%;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -107,48 +125,28 @@ body {
 }
 
 .menu-content {
-    width: 100%;
+    width: 90%;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
 .menu-content-city {
-    background: url(../resources/Backgrounds/City.png);
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-    transition: 0.8s ease;
+    .background-option(url(../resources/Backgrounds/City.png));
 }
 
 .menu-content-lightning {
-    background: url(../resources/Backgrounds/Lightning.png);
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-    transition: 0.8s ease;
+    .background-option(url(../resources/Backgrounds/Lightning.png));
 }
 
 .menu-content-leaves {
-    background: url(../resources/Backgrounds/Leaves.png);
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-    transition: 0.8s ease;
+    .background-option(url(../resources/Backgrounds/Leaves.png));
 }
 
 .menu-content-night {
-    background: url(../resources/Backgrounds/Night.png);
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-    transition: 0.8s ease;
+    .background-option(url(../resources/Backgrounds/Night.png));
 }
 
 .menu-content-water {
-    background: url(../resources/Backgrounds/Water.png);
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-    transition: 0.8s ease;
+    .background-option(url(../resources/Backgrounds/Water.png));
 }

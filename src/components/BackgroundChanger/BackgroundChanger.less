@@ -1,3 +1,10 @@
+.background-option(@background_png, @center_size) {
+    background: @background_png;
+    background-position: @center_size;
+    background-size: calc(100vw - 200px) auto;
+    background-repeat: no-repeat;
+}
+
 .bg-changer-container::before {
     content: '';
     position: absolute;
@@ -83,38 +90,23 @@
         }
 
         .menu-content-city {
-            background: url(../../resources/Backgrounds/City.png);
-            background-position: center 41%;
-            background-size: calc(100vw - 200px) auto;
-            background-repeat: no-repeat;
+            .background-option(url(../../resources/Backgrounds/City.png), center 41%);
         }
 
         .menu-content-lightning {
-            background: url(../../resources/Backgrounds/Lightning.png);
-            background-position: center 45%;
-            background-size: calc(100vw - 200px) auto;
-            background-repeat: no-repeat;
+            .background-option(url(../../resources/Backgrounds/Lightning.png), center 45%);
         }
 
         .menu-content-leaves {
-            background: url(../../resources/Backgrounds/Leaves.png);
-            background-position: center 45%;
-            background-size: calc(100vw - 200px) auto;
-            background-repeat: no-repeat;
+            .background-option(url(../../resources/Backgrounds/Leaves.png), center 45%);
         }
 
         .menu-content-night {
-            background: url(../../resources/Backgrounds/Night.png);
-            background-position: center 40%;
-            background-size: calc(100vw - 200px) auto;
-            background-repeat: no-repeat;
+            .background-option(url(../../resources/Backgrounds/Night.png), center 40%);
         }
 
         .menu-content-water {
-            background: url(../../resources/Backgrounds/Water.png);
-            background-position: center 40%;
-            background-size: calc(100vw - 200px) auto;
-            background-repeat: no-repeat;
+            .background-option(url(../../resources/Backgrounds/Water.png), center 40%);
         }
     }
 }
