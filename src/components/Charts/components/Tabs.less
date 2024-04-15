@@ -1,0 +1,97 @@
+// Charts 
+.chart-data-set {
+    margin: 4px 0;
+
+    >div {
+        display: flex;
+
+        >div {
+            width: 50%;
+            margin: 4px 4px;
+        }
+    }
+}
+
+
+// Graphs
+.graphs-tab-container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+
+    .graph-data-buttons {
+        height: 5%;
+        display: flex;
+
+        >:first-child {
+            margin-right: 4px;
+        }
+
+        .graph-configure-button {
+            button {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+        }
+    }
+
+    .graph-data-block {
+        height: 15%;
+        width: 100%;
+        border: 1px solid black;
+
+        >:first-child {
+            height: 100%;
+            display: flex;
+
+            .graph-data-coniguration {
+                width: 50%;
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+
+                >div {
+                    height: 50%;
+                    width: 100%;
+                    display: flex;
+                    align-items: center;
+
+                    >span {
+                        width: 20%;
+                        margin: 0 8px;
+                    }
+
+                    .slider {
+                        width: 80%;
+                    }
+                }
+            }
+
+            .graph-movement {
+                width: 50%;
+                display: flex;
+                border-left: 1px solid black;
+                justify-content: space-around;
+                align-items: center;
+
+                >div {
+                    width: 110px;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+
+                    .left_right {
+                        width: 110px;
+                        display: flex;
+                        justify-content: space-around;
+                    }
+                }
+            }
+        }
+    }
+
+    .graphs-block {
+        height: 80%;
+    }
+}

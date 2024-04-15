@@ -38,19 +38,19 @@ const App = () => {
     ];
 
     const gamesLinkData = [
-        { link: '/hover-and-blur', label: 'Hover And Blur' },
-        { link: '/snake', label: 'Snake' },
-        { link: '/rocket-clicker', label: 'Rocket Clicker' },
+        { link: '/hover-and-blur', label: 'Hover And Blur'  },
+        { link: '/snake', label: 'Snake', close: true },
+        { link: '/rocket-clicker', label: 'Rocket Clicker', close: true },
     ];
 
     const changeTheme = (switcher: boolean) => {
         dispatch({ type: 'SET_SITE_THEME', payload: switcher ? 'light' : 'dark' });
     };
 
-    const getLinks = (linksData: { link: string, label: string }[]) => {
-        return linksData.map((item: { link: string, label: string }) => (
+    const getLinks = (linksData: { link: string, label: string, close?: boolean }[]) => {
+        return linksData.map((item: { link: string, label: string, close?: boolean }) => (
             <Link to={item.link} className='link'>
-                <Button type={site_theme === 'light' ? 'primary' : 'default'}>{item.label}</Button>
+                <Button disabled={item.close} type={site_theme === 'light' ? 'primary' : 'default'}>{item.label}</Button>
             </Link>
         ));
     };
