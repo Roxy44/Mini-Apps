@@ -1,131 +1,151 @@
 import React, { useEffect, useRef, useState } from 'react';
 
-import { Button, Form, Input } from 'antd';
+import { Button, Form, Input, InputNumber, Radio, message } from 'antd';
 
 import { PlusOutlined } from '@ant-design/icons';
 
-import Chart from 'chart.js/auto';
+import Chart, { ChartType } from 'chart.js/auto';
 
 import './Tabs.less';
 
 const ChartsTab = () => {
 
-    const [dataSet, setDataSet] = useState([...Array(5)]);
+    const colorDictionary = [
+        'rgb(255, 99, 132, 0.2)',
+        'rgb(255, 159, 64, 0.2)',
+        'rgb(255, 205, 86, 0.2)',
+        'rgb(75, 192, 192, 0.2)',
+        'rgb(43, 202, 255, 0.2)',
+        'rgb(54, 162, 235, 0.2)',
+        'rgb(153, 102, 255, 0.2)',
+        'rgb(201, 203, 207, 0.2)',
+        'rgb(0, 0, 0, 0.4)',
+        'rgb(139, 69, 19, 0.2)',
+    ];
 
-    const [form] = Form.useForm();    
+    const borderColorDictionary = [
+        'rgb(255, 99, 132)',
+        'rgb(255, 159, 64)',
+        'rgb(255, 205, 86)',
+        'rgb(75, 192, 192)',
+        'rgb(43, 202, 255)',
+        'rgb(54, 162, 235)',
+        'rgb(153, 102, 255)',
+        'rgb(201, 203, 207)',
+        'rgb(0, 0, 0)',
+        'rgb(139, 69, 19)',
+    ];
+
+    const [dataSetCounter, changeDataSetCounter] = useState(1);
+    const [dataSet, setDataSet] = useState([...Array(1)]);
+    const [chartData, setChartData] = useState<any>([]);
+    const [chartType, setChartType] = useState<ChartType>('bar');
+    const [isConfigure, setIsConfigure] = useState(false);
 
     const canvas = useRef<HTMLCanvasElement>(null);
 
-    // useEffect(() => {
-    //     const functionValue: any = [];
-
-    //     for (let i = -10; i <= 10; i++) functionValue.push({x: i, y: i});
- 
-    //     setGraphData({
-    //         labels: [...Array(21)].map((_, index: number) => index - 10),
-    //         datasets: [
-    //             {
-    //                 label: 'Graph of the straight function',
-    //                 data: functionValue,
-    //                 borderColor: color,
-    //                 tension
-    //             },
-    //         ]
-    //     });
-    // }, []);
-
-    // useEffect(() => {
-    //     if (canvas.current) {
-    //         const chart = new Chart(canvas.current, {
-    //             type: 'line',
-    //             data: graphData,
-    //         });
-    //         return () => {
-    //             chart.destroy();
-    //         };
-    //     }
-    // }, [graphData]);
-    
-    // useEffect(() => {
-    //     const functionValue: any = [];
-
-    //     for (let i = -5; i <= 5; i++) {
-    //         switch (graphType)  {
-    //         case 'straight': 
-    //             functionValue.push({x: i + horizontal, y: i + vertical});
-    //             break;
-    //         case 'parabola': 
-    //             functionValue.push({x: i + horizontal, y: (i * i) + vertical});
-    //             break;
-    //         case 'hyperbola': 
-    //             functionValue.push({x: i + horizontal, y: i ? 1 / i : 0 + vertical});
-    //             break;
-    //         case 'sinus': 
-    //             functionValue.push({x: i + horizontal, y: Math.sin(i) + vertical});
-    //             break;
-    //         case 'cosinus': 
-    //             functionValue.push({x: i + horizontal, y: Math.cos(i) + vertical});
-    //             break;
-    //         default: message.error('Something went wrong'); break;
-    //         }
-    //     }
-
-    //     setGraphData({
-    //         labels: [...Array(21)].map((_, index: number) => index - 10),
-    //         datasets: [
-    //             {
-    //                 label: `Graph of the ${graphType} function`,
-    //                 data: functionValue,
-    //                 fill: filled,
-    //                 borderColor: color,
-    //                 tension
-    //             },
-    //             {
-    //                 label: 'X',
-    //                 data: [ {x: -10, y: 0}, {x: 10, y: 0} ],
-    //                 borderColor: 'orange',
-    //             },
-    //             {
-    //                 label: 'Y',
-    //                 data: [ {x: 0, y: -10}, {x: 0, y: 10} ],
-    //                 borderColor: 'red',
-    //             },
-    //         ]
-    //     });
-    // }, [graphType, color, tension, filled, vertical, horizontal]);
+    useEffect(() => {
+        if (canvas.current) {
+            const chart = new Chart(canvas.current, {
+                type: chartType,
+                data: chartData,
+            });
+            return () => {
+                chart.destroy();
+            };
+        }
+    }, [chartData, chartType]);
 
     const onFinish = (data: any) => {
-        console.log(data);
+        const labels: string[] = [];
+        const values: number[] = [];
+      
+        for (const value in data) {
+            if (value.includes('name')) {
+                labels.push(data[value]);
+            } else {
+                values.push(data[value]); 
+            }
+        }
+        
+        setChartData({
+            labels,
+            datasets: [
+                {
+                    label: `Chart of the ${chartType} type`,
+                    data: values,
+                    backgroundColor: [...Array(dataSetCounter)].map((_, index: number) => colorDictionary[index]),
+                    borderColor: [...Array(dataSetCounter)].map((_, index: number) => borderColorDictionary[index]),
+                    borderWidth: 1
+                },
+            ]
+        });
+        
+        setIsConfigure(true);
     };
 
     return (
         <div className='charts-tab-container'>
-            <div className='charts-data-block'>
-                <div className='chart-data'>
-                    <Button type='primary' icon={<PlusOutlined />} onClick={() => setDataSet([...dataSet, undefined])} />
-                    
-                    <Form
-                        className='chart-data-set'
-                        form={form}
-                        autoComplete='off'
-                        onFinish={onFinish}
-                    >
-                        {
-                            ...dataSet.map((_, index: number) => (
-                                <div>
-                                    <Form.Item label={`Name${index}`}><Input /></Form.Item>
-                                    <Form.Item label={`Value${index}`}><Input /></Form.Item>
-                                </div> 
-                            ))
-                        }
-                    </Form>
+            <div className='charts-block' style={{display: isConfigure ? 'flex': 'none'}}>
+                <div className='chart-data-type'>
+                    <span>Chart type</span>
+                    <Radio.Group 
+                        options={
+                            [
+                                { label: 'Bar', value: 'bar' },
+                                { label: 'Pie', value: 'doughnut' },
+                                { label: 'Sector', value: 'polarArea' },
+                                { label: 'Radar', value: 'radar' },
+                            ]
+                        } 
+                        onChange={(e: any) => setChartType(e.target.value)
+                        } 
+                        value={chartType} 
+                    />
                 </div>
-
-                <Button type='primary' htmlType='submit'>Calculate</Button>
-            </div>
-            <div className='charts-block'>
                 <canvas ref={canvas} />
+                <div className='return-button'>
+                    <Button type='primary' onClick={() => setIsConfigure(false)}>Return</Button>
+                </div>
             </div>
+            <Form 
+                style={{display: isConfigure ? 'none': 'block'}}
+                className='chart-data-block' 
+                autoComplete='off' 
+                onFinish={onFinish}
+            >
+                <div className='chart-data-buttons'>
+                    <Button type='primary' icon={<PlusOutlined />} onClick={() => {
+                        if (dataSetCounter < 10) {
+                            changeDataSetCounter(dataSetCounter + 1);
+                            setDataSet([...dataSet, undefined]);
+                        } else message.error('You reach the limit of data set (max 10)');
+                    }}/>
+                    <Button type='primary' htmlType='submit'>Calculate</Button>
+                </div>
+                <div className='chart-data-set'>
+                    {
+                        ...dataSet.map((_, index: number) => (
+                            <div>
+                                <Form.Item 
+                                    label={`Name${index + 1}`} 
+                                    name={`name${index + 1}`} 
+                                    rules={[{ required: true, message: 'Please input field name!' }]}
+                                >
+                                    <Input />
+                                </Form.Item>
+                                <Form.Item 
+                                    label={`Value${index + 1}`} 
+                                    name={`value${index + 1}`} 
+                                    rules={[{ required: true, type: 'number', message: 'Please input field value! (Only numbers)' }]}
+                                >
+                                    <InputNumber />
+                                </Form.Item>
+                            </div> 
+                        ))
+                    }
+                </div>
+            </Form>
         </div>
     );
 };
