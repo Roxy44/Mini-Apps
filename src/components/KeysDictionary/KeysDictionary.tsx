@@ -3,7 +3,6 @@ import React, { useEffect, useState } from 'react';
 import './KeysDictionary.less';
 
 const KeysDictionary = () => {
-
     const [eventKey, setEventKey] = useState('');
     const [eventKeyCode, setEventKeyCode] = useState('');
     const [eventCode, setEventCode] = useState('');
@@ -19,7 +18,7 @@ const KeysDictionary = () => {
     };
 
     return (
-        <div className='keys-dictionary-container' tabIndex={-1}  id='wonna-get-focus' onKeyDown={(e: any) => keyPressHandler(e)}>
+        <div id='wonna-get-focus' className='keys-dictionary-container' tabIndex={-1} onKeyDown={keyPressHandler}>
             <span className='events-title'>Press any key on your keyboard</span>
             <div className='events-container'>
                 <div className='event-key'>

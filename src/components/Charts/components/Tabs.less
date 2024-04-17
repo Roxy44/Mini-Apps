@@ -2,8 +2,25 @@
 .charts-tab-container {
     height: 100%;
 
-    .chart-data-block {
+    .charts-block {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-evenly;
 
+        .chart-data-type {
+            >span {
+                margin-right: 8px;
+            }
+        }
+
+        canvas {
+            height: 85% !important;
+        }
+    }
+
+    .chart-data-block {
         .chart-data-buttons {
             >:first-child {
                 margin-right: 6px;
@@ -25,25 +42,6 @@
                     width: 100%;
                 }
             }
-        }
-    }
-
-    .charts-block {
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: space-evenly;
-
-        .chart-data-type {
-            >span {
-                margin-right: 8px;
-            }
-        }
-
-        canvas {
-            height: 85% !important;
-            margin: 8px 0;
         }
     }
 }
@@ -74,59 +72,57 @@
     .graph-data-block {
         height: 15%;
         width: 100%;
+        flex-direction: row;
         border: 1px solid lightgray;
 
-        >:first-child {
+        .graph-data-coniguration {
+            width: 50%;
             height: 100%;
             display: flex;
+            flex-direction: column;
 
-            .graph-data-coniguration {
-                width: 50%;
-                height: 100%;
+            >div {
+                height: 50%;
                 display: flex;
-                flex-direction: column;
-
-                >div {
-                    height: 50%;
-                    width: 100%;
-                    display: flex;
-                    align-items: center;
-
-                    >span {
-                        width: 20%;
-                        margin: 0 8px;
-                    }
-
-                    .slider {
-                        width: 80%;
-                    }
-                }
-            }
-
-            .graph-movement {
-                width: 50%;
-                display: flex;
-                border-left: 1px solid lightgray;
-                justify-content: space-around;
                 align-items: center;
 
-                >div {
-                    width: 110px;
-                    display: flex;
-                    flex-direction: column;
-                    align-items: center;
+                >span {
+                    width: 20%;
+                    margin: 0 8px;
+                }
 
-                    .left_right {
-                        width: 110px;
-                        display: flex;
-                        justify-content: space-around;
+                .slider {
+                    width: 80%;
+
+                    .ant-slider-rail {
+                        background-color: lightgray;
                     }
                 }
             }
         }
-    }
 
-    .graphs-block {
-        height: 80%;
+        .graph-movement {
+            width: 50%;
+            display: flex;
+            border-left: 1px solid lightgray;
+            justify-content: space-around;
+            align-items: center;
+
+            >div {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+
+                .left_right {
+                    width: 110px;
+                    display: flex;
+                    justify-content: space-around;
+                }
+            }
+        }
     }
+}
+
+.graphs-block {
+    height: 80%;
 }

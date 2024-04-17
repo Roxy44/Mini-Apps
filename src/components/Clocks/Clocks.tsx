@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
+
 import moment from 'moment';
 
 import './Clocks.less';
 
 const Clocks = () => {
-
     const [timeNow, setTime] = useState(''); 
     const [dateNow, setDate] = useState('');   
 
@@ -24,26 +24,25 @@ const Clocks = () => {
         const minutesHand = document.getElementById('minutes-hand')?.style;
         const secondsHand = document.getElementById('seconds-hand')?.style;
 
-        setInterval(() => {
-            const time = moment().format('h:mm:ss');
-            
-            if (hoursHand && minutesHand && secondsHand) {
+        if (hoursHand && minutesHand && secondsHand) {
+            setInterval(() => {
+                const time = moment().format('h:mm:ss');
+        
                 hoursHand.transform = `rotate(${scale(Number(time.split(':')[0]), 0, 11, 0, 360)}deg)`;
                 minutesHand.transform = `rotate(${scale(Number(time.split(':')[1]), 0, 59, 0, 360)}deg)`;
                 secondsHand.transform = `rotate(${scale(Number(time.split(':')[2]), 0, 59, 0, 360)}deg)`;
-            }
-            
-            if (Number(time.split(':')[2]) >= 59) {
-                setTimeout(() => setTime(moment().format('h:mm')), 1000);
-            }
-        }, 1000);
+                
+                if (Number(time.split(':')[2]) >= 59) {
+                    setTimeout(() => setTime(moment().format('h:mm')), 1000);
+                }
+            }, 1000);
+        }
     };
 
     return (
         <div className='clocks-container'>
             <div className='clocks-block'>
                 <div className='clocks'>
-
                     <div className='six-and-twelve'>
                         <div className='twelve'></div>  
                     </div>

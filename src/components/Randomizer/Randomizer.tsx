@@ -4,9 +4,8 @@ import { Input } from 'antd';
 
 import './Randomizer.less';
 
-const { TextArea } = Input;
-
 const Randomizer = () => {
+    const { TextArea } = Input;
 
     const [textString, setTextString] = useState('');
     const [textAreaValue, setTextAreaValue] = useState('');
@@ -20,9 +19,21 @@ const Randomizer = () => {
 
     const onPressEnterHandler = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
         e.preventDefault();
+
         setTextAreaValue('');
 
-        const times = 30;
+        if (textString === '') {
+            return;
+        }
+
+        document.querySelector('.highlight')?.classList.remove('highlight');
+        
+        const times = 10;
+        const textarea = document.querySelector('textarea');
+
+        if (textarea) {
+            textarea.disabled = true;
+        }
 
         const interval = setInterval(() => {
             const randomItem = pickRandomItem();
@@ -43,11 +54,17 @@ const Randomizer = () => {
                 highlightItem(randomItem);
             }, 100);
 
+            if (textarea) {
+                textarea.disabled = false;
+                textarea.focus();
+            }
+
         }, times * 100);
     };
 
     const pickRandomItem = () => {
         const item = document.querySelectorAll('.random-item');
+
         return item[Math.floor(Math.random() * item.length)];
     };
     

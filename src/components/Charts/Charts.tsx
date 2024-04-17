@@ -8,7 +8,6 @@ import GraphsTab from './components/GraphsTab';
 import './Charts.less';
 
 const Charts = () => {
-
     const tabsItems: TabsProps['items'] = [
         {
             key: '1',

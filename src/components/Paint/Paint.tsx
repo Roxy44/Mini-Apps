@@ -5,24 +5,25 @@ import { Button } from 'antd';
 import './Paint.less';
 
 const Paint = () => {
-    const [color, setColor] = useState('black');
+    const [color, setColor] = useState('#000000');
     const [brushSize, setBrushSize] = useState(2);
     const [isPressed, setIsPressed] = useState(false);
-    const [x, setX] = useState<any>();
-    const [y, setY] = useState<any>();
+    const [x, setX] = useState<number>();
+    const [y, setY] = useState<number>();
 
-    const canvas: any = document.getElementById('canvas');
+    const canvas = document.getElementById('canvas') as HTMLCanvasElement;
+
     const ctx = canvas?.getContext('2d');
 
-    const mouseDownHandler = (e: any) => {
+    const mouseDownHandler = () => {
         setIsPressed(true);
     };
 
-    const mouseMoveHandler = (e: any) => {
+    const mouseMoveHandler = (e: React.MouseEvent) => {
         if (isPressed) {
             drawCircle();
             setX(e.nativeEvent.offsetX / (3.5 - (e.nativeEvent.offsetX / 4200)));
-            setY(e.nativeEvent.offsetY / (3.5 - (e.nativeEvent.offsetY / 1200)));
+            setY(e.nativeEvent.offsetY / (3.5 - (e.nativeEvent.offsetY / 1200)));            
         }
     };
 
@@ -33,7 +34,7 @@ const Paint = () => {
     };
 
     const drawCircle = () => {
-        if (ctx) {
+        if (ctx && x && y) {
             ctx.beginPath();
             ctx.arc(x, y, brushSize, 0, Math.PI * 2);
             ctx.fillStyle = color;
@@ -57,7 +58,7 @@ const Paint = () => {
                     <Button className='button-add' title='increase size' onClick={() => (brushSize !== 5 && setBrushSize(brushSize + 1))}>+</Button>
                     <input type='color' value={color} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setColor(e.target.value)} />
                 </div>
-                <Button className='button-clear' title='clear' onClick={() => (ctx.clearRect(0,0, canvas.width, canvas.height))}>X</Button>
+                <Button className='button-clear' title='clear' onClick={() => (ctx && ctx.clearRect(0,0, canvas.width, canvas.height))}>X</Button>
             </div>
         </div>
     );

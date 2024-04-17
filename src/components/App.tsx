@@ -20,12 +20,12 @@ import { RootState } from './types';
 
 import './App.less';
 
-const { Sider } = Layout;
-
 const App = () => {
+    const { Sider } = Layout;
+
     const dispatch = useDispatch();
 
-    const { background_color_theme, site_theme } = useSelector((state: RootState) => state.settings);
+    const { background_page_theme, site_theme } = useSelector((state: RootState) => state.settings);
 
     const appsLinkData = [
         { link: '/change-background', label: 'Change Background' },
@@ -39,18 +39,20 @@ const App = () => {
 
     const gamesLinkData = [
         { link: '/hover-and-blur', label: 'Hover And Blur'  },
-        { link: '/snake', label: 'Snake', close: true },
-        { link: '/rocket-clicker', label: 'Rocket Clicker', close: true },
+        { link: '/', label: 'Not working!'  },
+        { link: '/', label: 'Not working!'  },
+        // { link: '/snake', label: 'Snake'},
+        // { link: '/rocket-clicker', label: 'Rocket Clicker' },
     ];
 
     const changeTheme = (switcher: boolean) => {
         dispatch({ type: 'SET_SITE_THEME', payload: switcher ? 'light' : 'dark' });
     };
 
-    const getLinks = (linksData: { link: string, label: string, close?: boolean }[]) => {
-        return linksData.map((item: { link: string, label: string, close?: boolean }) => (
+    const getLinks = (linksData: { link: string, label: string }[]) => {
+        return linksData.map((item: { link: string, label: string }) => (
             <Link to={item.link} className='link'>
-                <Button disabled={item.close} type={site_theme === 'light' ? 'primary' : 'default'}>{item.label}</Button>
+                <Button type={site_theme === 'light' ? 'primary' : 'default'}>{item.label}</Button>
             </Link>
         ));
     };
@@ -60,18 +62,18 @@ const App = () => {
             <Layout>
                 <Sider className='side-menu' theme={site_theme}>
                     <Link to='/'>
-                        <Button className={`menu-label theme-label-${site_theme}`} type={site_theme === 'light' ? 'primary' : 'default'}>Mini Apps</Button>
+                        <Button className={`menu-logo-button theme-logo-${site_theme}`}>Mini Apps</Button>
                     </Link>
 
                     <Divider className={`divider-${site_theme}`} />
 
                     <div className='menu-apps'>
-                        <span className={`theme-title ${site_theme}`}>Applications</span>
+                        <span className={site_theme}>Applications</span>
                         {...getLinks(appsLinkData)}
                         
                         <Divider className={`divider-${site_theme}`} />
 
-                        <span className={`theme-title ${site_theme}`}>Games</span>
+                        <span className={site_theme}>Games</span>
                         {...getLinks(gamesLinkData)}
                     </div>
 
@@ -82,7 +84,7 @@ const App = () => {
                         <Switch className={`theme-switcher-${site_theme}`} checkedChildren='light' unCheckedChildren='dark' onChange={(value: boolean) => changeTheme(value)} />
                     </div>
                 </Sider>
-                <div className={`menu-content ${background_color_theme}`}>
+                <div className={`page-content ${background_page_theme}`}>
                     <Routes>
                         <Route path='/' element={<BackgroundChanger />} />
                         <Route path='/change-background' element={<BackgroundChanger />} />

@@ -1,15 +1,15 @@
 import React, { useEffect, useRef, useState } from 'react';
 
-import { Button, Form, Input, InputNumber, Radio, message } from 'antd';
-
+import { Button, Form, Input, InputNumber, Radio, RadioChangeEvent, message } from 'antd';
 import { PlusOutlined } from '@ant-design/icons';
 
 import Chart, { ChartType } from 'chart.js/auto';
 
+import { ChartDataSetType, ChartDataType } from '../../types';
+
 import './Tabs.less';
 
 const ChartsTab = () => {
-
     const colorDictionary = [
         'rgb(255, 99, 132, 0.2)',
         'rgb(255, 159, 64, 0.2)',
@@ -36,9 +36,8 @@ const ChartsTab = () => {
         'rgb(139, 69, 19)',
     ];
 
-    const [dataSetCounter, changeDataSetCounter] = useState(1);
     const [dataSet, setDataSet] = useState([...Array(1)]);
-    const [chartData, setChartData] = useState<any>([]);
+    const [chartData, setChartData] = useState<ChartDataType>({} as ChartDataType);
     const [chartType, setChartType] = useState<ChartType>('bar');
     const [isConfigure, setIsConfigure] = useState(false);
 
@@ -56,26 +55,22 @@ const ChartsTab = () => {
         }
     }, [chartData, chartType]);
 
-    const onFinish = (data: any) => {
+    const onFinish = (data: ChartDataSetType) => {
         const labels: string[] = [];
         const values: number[] = [];
       
         for (const value in data) {
-            if (value.includes('name')) {
-                labels.push(data[value]);
-            } else {
-                values.push(data[value]); 
-            }
+            value.includes('name') ? labels.push(data[value]) : values.push(data[value]); 
         }
         
         setChartData({
             labels,
             datasets: [
                 {
-                    label: `Chart of the ${chartType} type`,
+                    label: 'Chart of your dataset',
                     data: values,
-                    backgroundColor: [...Array(dataSetCounter)].map((_, index: number) => colorDictionary[index]),
-                    borderColor: [...Array(dataSetCounter)].map((_, index: number) => borderColorDictionary[index]),
+                    backgroundColor: [...Array(dataSet.length)].map((_, index: number) => colorDictionary[index]),
+                    borderColor: [...Array(dataSet.length)].map((_, index: number) => borderColorDictionary[index]),
                     borderWidth: 1
                 },
             ]
@@ -98,28 +93,24 @@ const ChartsTab = () => {
                                 { label: 'Radar', value: 'radar' },
                             ]
                         } 
-                        onChange={(e: any) => setChartType(e.target.value)
+                        onChange={(e: RadioChangeEvent) => setChartType(e.target.value)
                         } 
                         value={chartType} 
                     />
                 </div>
                 <canvas ref={canvas} />
-                <div className='return-button'>
-                    <Button type='primary' onClick={() => setIsConfigure(false)}>Return</Button>
-                </div>
+                <Button type='primary' onClick={() => setIsConfigure(false)}>Return</Button>
             </div>
             <Form 
-                style={{display: isConfigure ? 'none': 'block'}}
                 className='chart-data-block' 
+                style={{display: isConfigure ? 'none': 'block'}}
                 autoComplete='off' 
                 onFinish={onFinish}
             >
                 <div className='chart-data-buttons'>
                     <Button type='primary' icon={<PlusOutlined />} onClick={() => {
-                        if (dataSetCounter < 10) {
-                            changeDataSetCounter(dataSetCounter + 1);
-                            setDataSet([...dataSet, undefined]);
-                        } else message.error('You reach the limit of data set (max 10)');
+                        if (dataSet.length < 10) setDataSet([...dataSet, undefined]);
+                        else message.error('You reach the limit of data set (max 10)');
                     }}/>
                     <Button type='primary' htmlType='submit'>Calculate</Button>
                 </div>
