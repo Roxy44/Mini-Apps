@@ -28,7 +28,7 @@ const App = () => {
     const { background_page_theme, site_theme } = useSelector((state: RootState) => state.settings);
 
     const appsLinkData = [
-        { link: '/change-background', label: 'Change Background' },
+        { link: '/Mini-Apps/change-background', label: 'Change Background' },
         { link: '/clocks', label: 'Clocks' },
         { link: '/keys-dictionary', label: 'Keys Dictionary' },
         { link: '/drag-and-drop', label: 'Drag and Drop' },
@@ -61,7 +61,7 @@ const App = () => {
         <BrowserRouter>
             <Layout>
                 <Sider className='side-menu' theme={site_theme}>
-                    <Link to='/'>
+                    <Link to='/' className='menu-logo-container'>
                         <Button className={`menu-logo-button theme-logo-${site_theme}`}>Mini Apps</Button>
                     </Link>
 
@@ -86,8 +86,8 @@ const App = () => {
                 </Sider>
                 <div className={`page-content ${background_page_theme}`}>
                     <Routes>
-                        <Route path='/' element={<BackgroundChanger />} />
-                        <Route path='/change-background' element={<BackgroundChanger />} />
+                        <Route path='/Mini-Apps/' element={<BackgroundChanger />} />
+                        <Route path='/Mini-Apps/change-background' element={<BackgroundChanger />} />
                         <Route path='/clocks' element={<Clocks />} />
                         <Route path='/keys-dictionary' element={<KeysDictionary />} />
                         <Route path='/drag-and-drop' element={<DragAndDrop />} />

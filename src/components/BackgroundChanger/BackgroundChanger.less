@@ -17,7 +17,9 @@
 }
 
 .bg-changer-container {
+    width: 95%;
     height: 100%;
+    max-width: 900px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -34,7 +36,10 @@
     }
 
     .background-block {
+        height: 80%;
         display: flex;
+        justify-content: center;
+        align-items: center;
 
         .background-button {
             display: flex;
@@ -83,8 +88,9 @@
         }
 
         .background-image {
-            width: 700px;
-            height: 700px;
+            width: 80%;
+            height: 100%;
+            max-height: 700px;
             box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
             overflow: hidden;
             z-index: 2 !important;
@@ -95,11 +101,11 @@
         }
 
         .page-content-lightning {
-            .background-option(url(../../resources/Backgrounds/Lightning.png), center 44.5%);
+            .background-option(url(../../resources/Backgrounds/Lightning.png), center 44.75%);
         }
 
         .page-content-leaves {
-            .background-option(url(../../resources/Backgrounds/Leaves.png), center 44.25%);
+            .background-option(url(../../resources/Backgrounds/Leaves.png), center 44.5%);
         }
 
         .page-content-night {

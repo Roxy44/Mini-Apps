@@ -27,6 +27,14 @@ const Paint = () => {
         }
     };
 
+    const touchMoveHandler = (e: React.TouchEvent) => {
+        if (isPressed) {
+            drawCircle();
+            setX(e.touches[0].clientX / (10 - (e.touches[0].clientX / 130)));
+            setY(e.touches[0].clientY / (24 - (e.touches[0].clientY / 45)));            
+        }
+    };
+
     const mouseUpHandler = () => {
         setIsPressed(false);
         setX(undefined);
@@ -50,6 +58,9 @@ const Paint = () => {
                 onMouseDown={mouseDownHandler}
                 onMouseMove={mouseMoveHandler}
                 onMouseUp={mouseUpHandler}
+                onTouchStart={mouseDownHandler}
+                onTouchMove={touchMoveHandler}
+                onTouchEnd={mouseUpHandler}
             />
             <div className='paint-menu-block'>
                 <div className='block-items'>

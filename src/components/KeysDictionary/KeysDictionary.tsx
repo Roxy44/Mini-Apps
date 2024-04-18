@@ -22,15 +22,15 @@ const KeysDictionary = () => {
             <span className='events-title'>Press any key on your keyboard</span>
             <div className='events-container'>
                 <div className='event-key'>
-                    <span className='event-label'>event.key</span>
+                    <span className='event-label'>Key</span>
                     <div className='event-content'>{eventKey}</div>
                 </div>
                 <div className='event-key-code'>
-                    <span className='event-label'>event.keyCode</span>
+                    <span className='event-label'>KeyCode</span>
                     <div className='event-content'>{eventKeyCode}</div>
                 </div>
                 <div className='event-code'>
-                    <span className='event-label'>event.code</span>
+                    <span className='event-label'>Code</span>
                     <div className='event-content'>{eventCode}</div>
                 </div>
             </div>
