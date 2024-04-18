@@ -1,4 +1,4 @@
-# Mini Apps alfa version - v0.1
+# Mini Apps alpha version - v0.1
 
 This is my personal project when I tried to test various features of this programming language (JS / TS). This is a free app, you can download it if u want.
 
