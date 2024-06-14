@@ -23,11 +23,11 @@ const BackgroundChanger = () => {
     ];
 
     const imageUrls = [
-        'a970fc80a58917b179e0.png',
-        '0a8208d4ac0bddcb7514.png',
-        '29d8aae35a71ea7f14a3.png',
-        'ef72300624530cd35630.png',
-        '522466ab6db78e6632dc.png' 
+        '4e665c9f5cf7c3c0f012.webp',
+        '205f0a7dc454968f7bb2.webp',
+        'b85d140a455a90bb7265.webp',
+        'fe738ed61d08c3612abf.webp',
+        '63d31799f5f6b6a6ff98.webp' 
     ];
 
     const [currentBG, setCurrentBG] = useState(backgroundDictionary.indexOf(background_page_theme));
