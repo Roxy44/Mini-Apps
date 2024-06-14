@@ -1,5 +1,6 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-// const webpack = require('webpack');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+
 const path = require('path');
 
 module.exports = {
@@ -26,7 +27,7 @@ module.exports = {
             },
             {
                 test: /\.mp3$/,
-                loader: 'file-loader'
+                loader: 'file-loader',
             },
         ],
     },
@@ -35,6 +36,11 @@ module.exports = {
             title: 'Mini-Apps',
             template: './public/index.html',
         }),
+        new CopyWebpackPlugin({
+            patterns: [
+                { from: 'public/favicon.png', to: 'favicon.png' },
+            ]
+        })
     ],
     resolve: {
         extensions: ['.tsx', '.ts', '.js'],
@@ -42,9 +48,12 @@ module.exports = {
     output: {
         path: path.resolve(__dirname, 'build'),
         filename: 'bundle.js',
+        publicPath: '/Mini-Apps/',
     },
     devServer: {
-        historyApiFallback: true,
         allowedHosts: ['all'],
+        historyApiFallback: {
+            index: '/Mini-Apps/',
+        },
     }
 };

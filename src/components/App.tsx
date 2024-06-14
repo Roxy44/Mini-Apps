@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { BrowserRouter, Link, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Link, Routes, Route } from 'react-router-dom';
 
 import { Button, Divider, Layout, Switch } from 'antd';
 
@@ -58,7 +58,7 @@ const App = () => {
     };
 
     return (
-        <BrowserRouter>
+        <Router basename='/Mini-Apps'>
             <Layout>
                 <Sider className='side-menu' theme={site_theme}>
                     <Link to='/' className='menu-logo-container'>
@@ -100,7 +100,7 @@ const App = () => {
                     </Routes>
                 </div>  
             </Layout>
-        </BrowserRouter>
+        </Router>
     );
 };
 
